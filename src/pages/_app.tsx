@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import Head from 'next/Head';
+import Head from 'next/head';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => (
   <>
