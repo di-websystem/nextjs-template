@@ -8,9 +8,12 @@ const Title = styled.h1`
 `;
 
 const fetcher = (url: string) => {
-  return fetch(url)
-    .then((res) => res.json())
-    .catch((error) => error);
+  return fetch(url).then((res) => {
+    if (res.status === 500) {
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
+    return res.json();
+  });
 };
 
 const Index: NextPage = () => {
@@ -19,14 +22,14 @@ const Index: NextPage = () => {
   });
 
   if (error) {
-    return <div>error</div>;
+    return <div>{error}</div>;
   }
 
   if (!data) {
     return <div>loading...</div>;
   }
 
-  return <Title>{data.name}</Title>;
+  return <Title>{data[0].name}</Title>;
 };
 
 export default Index;
