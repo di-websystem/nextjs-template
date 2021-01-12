@@ -5,6 +5,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => (
   <>
     <Head>
       <title key="title">next.js-app</title>
+      <link rel="manifest" href="/manifest.json" />
       <meta
         key="viewport"
         name="viewport"
